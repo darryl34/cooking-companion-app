@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateMealActivity"
+    android:layout_margin="20dp"
+    android:layout_marginLeft="5dp"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/inputMealTitle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Meal Title"
+        android:inputType="text"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"/>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputMealTitle"
+        android:hint="Date"
+        android:id="@+id/inputDate"
+        android:inputType="date"
+        android:layout_marginLeft="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No. Of Dishes: "
+        android:id="@+id/textNumOfDishes"
+        android:layout_below="@id/inputDate"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <EditText
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_toEndOf="@id/textNumOfDishes"
+        android:layout_below="@id/inputDate"
+        android:id="@+id/inputDishCount"/>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="next" />
+
+</RelativeLayout>
