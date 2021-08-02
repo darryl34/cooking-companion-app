@@ -34,7 +34,7 @@ public class Meal implements Serializable
     
     public LocalDate getFormattedDate()
     {
-        return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/M/yy"));
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern("d/M/yy"));
     }
     
     public int[] getDateAsArray()

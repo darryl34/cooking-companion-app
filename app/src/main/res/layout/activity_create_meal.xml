@@ -9,40 +9,79 @@
     android:layout_marginLeft="5dp"
     android:padding="20dp">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputMealTitle"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Meal Title"
-        android:inputType="text"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:hint="Meal Title">
 
-    <EditText
-        android:layout_width="100dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputMealTitle_editText"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:id="@+id/dateLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/inputMealTitle"
-        android:hint="Date"
-        android:id="@+id/inputDate"
-        android:inputType="date"
-        android:layout_marginLeft="50dp"/>
+        android:layout_below="@id/inputMealTitle">
+
+        <TextView
+            android:id="@+id/txtInputDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputMealTitle"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:inputType=""
+            android:text="Pick a date: " />
+
+        <Button
+            android:id="@+id/selectDateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@id/txtInputDate"
+            android:insetTop="11dp"
+            android:insetBottom="15dp"
+            android:onClick="onSelectButtonClicked"
+            android:text="select"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/textNumOfDishes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No. Of Dishes: "
-        android:id="@+id/textNumOfDishes"
-        android:layout_below="@id/inputDate"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="50dp"/>
+        android:layout_below="@id/dateLayout"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:text="No. Of Dishes: " />
 
-    <EditText
-        android:layout_width="30dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:layout_marginLeft="10dp"
+        app:hintEnabled="false"
+        android:layout_alignBottom="@id/textNumOfDishes"
         android:layout_toEndOf="@id/textNumOfDishes"
-        android:layout_below="@id/inputDate"
-        android:id="@+id/inputDishCount"/>
+        android:id="@+id/inputDishCount">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:padding="0dp"
+            android:textIsSelectable="false"
+            android:id="@+id/dishCountList"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/nextButton"

@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton createMealButton;
     private MaterialToolbar toolbar;
 
+    private CalendarDay today = CalendarDay.today();
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +43,25 @@ public class MainActivity extends AppCompatActivity {
         MealsRecViewAdapter adapter = new MealsRecViewAdapter(this);
         calendarView = findViewById(R.id.calendarView);
         calendarRecView = findViewById(R.id.calendarRecView);
+        calendarRecView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     
         calendarView.clearSelection();
-        calendarView.setDateSelected(CalendarDay.today(), true);
+        calendarView.setDateSelected(today, true);
+        adapter.setMeals(model.getMeals(formatDate(today)));
+        calendarRecView.setAdapter(adapter);
         calendarView.addDecorator(new EventDecorator(Color.RED, getEventDates(model.getMeals())));
+        
+        
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(MaterialCalendarView widget, CalendarDay date, boolean selected) {
-                String formatted = formatDate(date.getYear(), date.getMonth(), date.getDay());
+                String formatted = formatDate(date);
                 adapter.setMeals(model.getMeals(formatted));
                 calendarRecView.setAdapter(adapter);
-                calendarRecView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
             }
         });
         
+        // TODO: set date to today if month selected is current month
         calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
@@ -83,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     
-    private String formatDate(int year, int month, int dayOfMonth)
+    private String formatDate(CalendarDay date)
     {
-        String dayStr = Integer.toString(dayOfMonth);
-        String monthStr = Integer.toString(month);
-        String yearStr = Integer.toString(year).substring(2);
+        String dayStr = Integer.toString(date.getDay());
+        String monthStr = Integer.toString(date.getMonth());
+        String yearStr = Integer.toString(date.getYear()).substring(2);
         String rawDate = dayStr + "/" + monthStr + "/" + yearStr;
         return rawDate;
     }
