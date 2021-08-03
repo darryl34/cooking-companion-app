@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -31,11 +34,18 @@ public class MealDetailActivity extends AppCompatActivity {
                 meal = (Meal) extras.getSerializable("meal");
                 
                 ( (TextView) findViewById(R.id.detailPage_mealTitle)).setText(meal.getTitle());
-                ( (TextView) findViewById(R.id.detailPage_mealDate)).setText(meal.getDate());
+                ( (TextView) findViewById(R.id.detailPage_mealDate)).setText("Date: "+meal.getDate());
+                
+                if (meal.getImagePath() != null)
+                {
+                    Bitmap bitmap = BitmapFactory.decodeFile(meal.getImagePath());
+                    ( (ImageView) findViewById(R.id.mealDetail_imageView)).setImageBitmap(bitmap);
+                }
                 
                 if (meal.getDishes() != null)
                 {
                     LinearLayout layout = (LinearLayout) findViewById(R.id.detailPage_layout);
+                    int i = 1;
                     for (Dish dish : meal.getDishes())
                     {
                         TextView textView = new TextView(this);
@@ -43,8 +53,8 @@ public class MealDetailActivity extends AppCompatActivity {
                                                                     LayoutParams.WRAP_CONTENT);
                         layoutParams.setMargins(0, 30, 10, 10);
                         textView.setLayoutParams(layoutParams);
-                        textView.setText("Dish Name: " + dish.getName() + "\nDish Description: " + dish.getDescription());
-                        //textView.setPadding(20,20,20,20);
+                        textView.setText("Dish " + Integer.toString(i) + ": " + dish.getName());
+                        i++;
                         layout.addView(textView);
                     }
                 }

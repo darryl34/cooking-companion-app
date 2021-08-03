@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     
     private MaterialCalendarView calendarView;
     private RecyclerView calendarRecView;
-    
     private FloatingActionButton createMealButton;
     private MaterialToolbar toolbar;
 
@@ -36,10 +37,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isFirstRun = sp.getBoolean("FIRSTRUN", true);
+        if (isFirstRun)
+        {
+            // Operations to be performed only on app install
+            Model model = ModelFactory.getModel(MainActivity.this);
+            model.setDefaultMeals();
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("FIRSTRUN", false);
+            editor.apply();
+        }
         
         Model model = ModelFactory.getModel(MainActivity.this);
-        if (model.getItemCount() == 0) model.setDefaultMeals();
-    
         MealsRecViewAdapter adapter = new MealsRecViewAdapter(this);
         calendarView = findViewById(R.id.calendarView);
         calendarRecView = findViewById(R.id.calendarRecView);
@@ -84,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, CalendarViewActivity.class);
+//                startActivity(intent);
             }
         });
     }

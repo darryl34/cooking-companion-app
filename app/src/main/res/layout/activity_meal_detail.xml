@@ -14,13 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/detailPage_mealTitle"
-        android:layout_below="@id/mealDetail_toolbar"/>
+        android:layout_below="@id/mealDetail_toolbar"
+        android:textSize="20sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/detailPage_mealDate"
-        android:layout_below="@id/detailPage_mealTitle"/>
+        android:layout_below="@id/detailPage_mealTitle"
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,8 +30,15 @@
         android:layout_below="@id/detailPage_mealDate"
         android:id="@+id/detailPage_layout"
         android:orientation="vertical">
-
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mealDetail_imageView"
+        android:layout_below="@id/detailPage_layout"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
 
 
 </RelativeLayout>

@@ -19,7 +19,7 @@
             android:id="@+id/txtMealDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtMealTitle" />
+            android:layout_below="@id/txtMealTitle"/>
 
     </RelativeLayout>
 

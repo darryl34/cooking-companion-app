@@ -18,17 +18,40 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titleText">
+        android:layout_below="@id/titleText"
+        android:id="@+id/addDishes_scrollView">
 
         <LinearLayout
+            android:id="@+id/addDishesPage_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleText"
+            android:layout_below="@id/imageView_layout"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:id="@+id/addDishesPage_layout"/>
+            android:orientation="vertical" />
 
     </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/imageView_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addDishes_scrollView">
+
+        <ImageView
+            android:id="@+id/dishesImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
+
+        <Button
+            android:id="@+id/selectImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dishesImageView"
+            android:layout_centerHorizontal="true"
+            android:text="Select Image" />
+    </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"

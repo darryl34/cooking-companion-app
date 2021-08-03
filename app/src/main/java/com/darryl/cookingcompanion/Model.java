@@ -69,8 +69,8 @@ public class Model
         ArrayList<Meal> defaultMeals = new ArrayList<>();
         ArrayList<Dish> dishes = new ArrayList<>();
     
-        dishes.add(new Dish("chicken", "fried"));
-        dishes.add(new Dish("vege", ""));
+        dishes.add(new Dish("chicken"));
+        dishes.add(new Dish("vege"));
         defaultMeals.add(new Meal("Lunch", "25/7/21"));
         defaultMeals.add(new Meal("Dinner", "25/7/21", dishes));
         defaultMeals.add(new Meal("Lunch", "26/7/21"));

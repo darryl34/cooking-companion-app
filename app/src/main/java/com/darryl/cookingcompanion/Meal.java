@@ -11,6 +11,7 @@ public class Meal implements Serializable
     private String title;
     private String date;
     private ArrayList<Dish> dishes;
+    private String imagePath;
 
     public Meal(String title, String date) {
         this.title = title;
@@ -49,6 +50,14 @@ public class Meal implements Serializable
     
     public void setDishes(ArrayList<Dish> dishes) {
         this.dishes = dishes;
+    }
+    
+    public String getImagePath() {
+        return imagePath;
+    }
+    
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
     
     @Override
